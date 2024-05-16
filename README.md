@@ -1,13 +1,15 @@
 ### Grails Discord Plugin v1.0.0 
 <br>
+Compatible with Grails 3 
+<br>
 Easy Integration With Discord
 
 Simply Add Token to the Config File
 
-v1.0.0 Compatible with Grails 3
 ```yml 
 discord.bot.token: "YOUR TOKEN"
 ```
+
 Using Javacord as core api <br>
 https://github.com/Javacord/Javacord
 

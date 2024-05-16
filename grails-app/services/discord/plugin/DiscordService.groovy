@@ -25,6 +25,7 @@ class DiscordService {
 
     @PostConstruct
     def init() {
+        def prefix = "[INFO]${new Date().format('yyyy-MM-dd HH:mm:ss:SSS')} - "
         String token = Holders.config.getRequiredProperty("discord.bot.token")
         if (token) {
             def discordApi = new DiscordApiBuilder().setToken(token).addIntents(Intent.MESSAGE_CONTENT, Intent.GUILD_MEMBERS).login();
@@ -34,14 +35,14 @@ class DiscordService {
                 e.printStackTrace()
             }
         } else {
-            log.info("Discord token is not provided")
+            println("${prefix}Discord token is not provided")
         }
 
         if (api) {
             api.getServers().forEach { server ->
-                log.info("Connected to server: ${server.getName()}, Server ID: ${server.getId()}")
+                println("${prefix}Connected to server: ${server.getName()}, Server ID: ${server.getId()}")
             }
-            log.info(">>>>>> Invite Link ": api.createBotInvite());
+            println("${prefix}Invite Link ": api.createBotInvite());
             //TODO send connection message to bot channel
 
             // add event listeners, please see the javadocs for a list of all available listeners
