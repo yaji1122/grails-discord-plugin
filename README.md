@@ -2,6 +2,7 @@ Easy Integration With Discord
 
 Simply Add Token to the Config File
 
+v1.0 Compatible with Grails 3
 ```yml 
 discord.bot.token: "YOUR TOKEN"
 ```
