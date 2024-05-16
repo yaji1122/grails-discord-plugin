@@ -94,7 +94,7 @@ class DiscordService {
         }
     }
 
-    void sendMessageByWebhook(String webhookUrl, MessageBuilder message) {
+    void sendMessageToWebhook(String webhookUrl, MessageBuilder message) {
         if (!api) {
             System.out.println("Discord API is not initialized")
             return
