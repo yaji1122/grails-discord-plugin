@@ -1,6 +1,6 @@
 package discord.plugin
 
-
+import grails.gorm.services.Service
 import grails.util.Holders
 import org.javacord.api.DiscordApi
 import org.javacord.api.DiscordApiBuilder
@@ -19,12 +19,11 @@ import org.javacord.api.interaction.SlashCommand
 import javax.annotation.PostConstruct
 import java.awt.*
 import java.util.concurrent.TimeUnit
-
+@Service
 class DiscordService {
-    private DiscordApi api = null
+    private static DiscordApi api = init()
 
-    @PostConstruct
-    def init() {
+    static def init() {
         def prefix = "[INFO]${new Date().format('yyyy-MM-dd HH:mm:ss:SSS')} - "
         String token = Holders.config.getRequiredProperty("discord.bot.token")
         if (token) {
@@ -42,7 +41,7 @@ class DiscordService {
             api.getServers().forEach { server ->
                 println("${prefix}Connected to server: ${server.getName()}, Server ID: ${server.getId()}")
             }
-            println("${prefix}Invite Link ": api.createBotInvite());
+            println("${prefix}Invite Link :" + api.createBotInvite());
             //TODO send connection message to bot channel
 
             // add event listeners, please see the javadocs for a list of all available listeners
@@ -95,7 +94,7 @@ class DiscordService {
         }
     }
 
-    void sendMessageToWebhook(String webhookUrl, MessageBuilder message) {
+    static void sendMessageToWebhook(String webhookUrl, MessageBuilder message) {
         if (!api) {
             System.out.println("Discord API is not initialized")
             return
