@@ -4,9 +4,9 @@
 import grails.plugins.*
 
 class DiscordPluginGrailsPlugin extends Plugin {
-
+    def version = "2.0.0"
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "3.3.10 > *"
+    def grailsVersion = "5.3.5 > *"
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp"
