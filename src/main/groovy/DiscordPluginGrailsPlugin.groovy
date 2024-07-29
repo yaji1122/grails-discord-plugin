@@ -1,7 +1,7 @@
-package grails.plugin.discord
+
+
 
 import grails.plugins.*
-import org.javacord.api.entity.user.User
 
 class DiscordPluginGrailsPlugin extends Plugin {
 

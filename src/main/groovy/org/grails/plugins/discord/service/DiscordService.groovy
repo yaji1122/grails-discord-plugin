@@ -1,4 +1,4 @@
-package discord.plugin
+package org.grails.plugins.discord.service
 
 import grails.gorm.services.Service
 import grails.util.Holders
@@ -16,7 +16,6 @@ import org.javacord.api.entity.user.User
 import org.javacord.api.entity.webhook.Webhook
 import org.javacord.api.interaction.SlashCommand
 
-import javax.annotation.PostConstruct
 import java.awt.*
 import java.text.SimpleDateFormat
 import java.util.concurrent.TimeUnit
