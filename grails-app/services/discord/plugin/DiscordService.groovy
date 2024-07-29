@@ -18,14 +18,16 @@ import org.javacord.api.interaction.SlashCommand
 
 import javax.annotation.PostConstruct
 import java.awt.*
+import java.text.SimpleDateFormat
 import java.util.concurrent.TimeUnit
 @Service
 class DiscordService {
     private static DiscordApi api = init()
 
     static def init() {
-        def prefix = "[INFO]${new Date().format('yyyy-MM-dd HH:mm:ss:SSS')} - "
-        String token = Holders.config.getRequiredProperty("discord.bot.token")
+        def sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        def prefix = "[INFO]${sdf.format(new Date())} - "
+        String token = Holders.config.getProperty("discord.bot.token")
         if (token) {
             def discordApi = new DiscordApiBuilder().setToken(token).addIntents(Intent.MESSAGE_CONTENT, Intent.GUILD_MEMBERS).login();
             try {
